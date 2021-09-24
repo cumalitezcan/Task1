@@ -30,4 +30,9 @@ public class UserManager implements UserService {
     public User getById(int id) {
         return this.userDao.getById(id);
     }
+
+    @Override
+    public User add(User user) {
+        return this.userDao.save(user);
+    }
 }
