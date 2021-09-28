@@ -7,6 +7,7 @@ import java.util.List;
 public interface UserService {
     List<User> getAll();
     User getById(int id);
-    User add(User user);
+    User add(User user) throws Exception;
+    //User getByPlaka_Id(String plaka);
 
 }

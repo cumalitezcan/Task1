@@ -1,8 +1,8 @@
 <template>
 <Header />
 <div class="container mt-3">
-  <form class="d-flex justify-content-center">
-      
+  <div class="row">
+  <form class="d-flex justify-content-center"> 
   <div class="form-row">
       <h2>Add User</h2>
     <div class="col pt-2">
@@ -14,16 +14,19 @@
     <div class="col pt-2">
       <input type="number" class="form-control" placeholder="Age" v-model="user.age">
     </div>
-  
     <div class="col pt-2">
       <input type="text" class="form-control" placeholder="Province" v-model="user.province">
     </div>
     <div class="col pt-2">
       <input type="text" class="form-control" placeholder="District" v-model="user.district">
     </div>
+    <div class="col pt-2">
+      <input type="text" class="form-control" placeholder="Plaka" v-model="user.plaka">
+    </div>
       <button @click="addUser()" class="btn btn-primary mt-2">Ekle</button>
   </div>
 </form>
+</div>
 </div>
 </template>
 
@@ -39,7 +42,8 @@ export default {
          surname:null,
          age:null,
          province:null,
-         district:null
+         district:null,
+         plaka:null
       },
     }
   },

@@ -5,7 +5,7 @@
     <hr />
     <ul class="list-group" v-if="userList.length > 0">
       <li v-for="user in userList" :key="user.id" class="d-flex justify-content-center align-items-start list-group-item">
-        <span class="mb-2">{{ user.name+" "+user.surname }} - {{user.province+" "+user.district}}</span>
+        <span class="mb-2">{{ user.name+" "+user.surname }} - {{user.province+" "+user.district}} - {{user.plaka}}</span>
       </li>
     </ul>
     <div v-else class="bg-blue text-white">

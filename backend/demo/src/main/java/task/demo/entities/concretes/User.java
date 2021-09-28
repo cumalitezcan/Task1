@@ -33,4 +33,7 @@ public class User {
     @Column(name="district")
     private String district;
 
+    @Column(name="plaka_no")
+    private String plaka;
+
 }

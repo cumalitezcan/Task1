@@ -10,4 +10,5 @@ public interface UserDao extends JpaRepository<User,Integer> {
     User getById(int id);
     User getByProvince(String province);
     User getByDistrict(String district);
+
 }

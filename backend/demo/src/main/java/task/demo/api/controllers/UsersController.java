@@ -25,7 +25,7 @@ public class UsersController {
     }
 
     @PostMapping("/add")
-    public User add(@RequestBody User user) {
+    public User add(@RequestBody User user) throws Exception {
         return this.userService.add(user);
     }
 

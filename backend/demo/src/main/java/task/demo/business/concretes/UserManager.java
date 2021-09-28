@@ -32,7 +32,15 @@ public class UserManager implements UserService {
     }
 
     @Override
-    public User add(User user) {
+    public User add(User user) throws Exception {
+
+        user.setProvince(user.getProvince().toUpperCase());
+
+        for (User i : this.userDao.findAll()) {
+            if (i.getPlaka()!=null && i.getPlaka().equalsIgnoreCase(user.getPlaka())) {
+                throw new Exception("User plate code already exist");
+            }
+        }
         return this.userDao.save(user);
     }
 }
