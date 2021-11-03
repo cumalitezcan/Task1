@@ -23,13 +23,20 @@ export default new Vuex.Store({
     searchFromMovieTitle({state,commit},payload){
     axios.get(`${state.apiUrl}title/find`,{headers:{...state.headers}, params : {q: payload}})
     .then(res => {
-      console.log(res)
-      commit("SET_MOVIE_SEARCH_RESULT",res)
-    }).catch(err=>{
-      console.log(err)
+      console.log(res.data.results)
+      let data= []
+      //get data
+      for(let i=0;i<res.data.results.length;i++){
+        //get data contain image
+        if(res.data.results[i].image)  {
+          data.push(res.data.results[i])
+        } 
+      }
+    
+      commit("SET_MOVIE_SEARCH_RESULT",data)
     })
-  }
+    .catch(err=> console.log(err))
+    }
 },
-  modules: {
-  }
-})
+  modules: { },
+});
