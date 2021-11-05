@@ -12,12 +12,31 @@ export default new Vuex.Store({
       'x-rapidapi-host': 'imdb8.p.rapidapi.com',
       'x-rapidapi-key': '83b6a8d056msh586464f5c969161p114268jsnd0bb370711c6'
   },
-   searchResults:[]
+   searchResults:[],
+   favMovies:[]
   },
   mutations: {
     SET_MOVIE_SEARCH_RESULT(state,payload){
       state.searchResults = payload
+    },
+    SET_FAV(state,payload){
+      switch (payload.type) {
+        case 'add':{
+          let i = state.searchResults.findIndex(el=>el.id === payload.movie.id)
+          state.searchResults[i]={...state.searchResults[i],fav:true}
+            state.favMovies.push(payload.movie)
+        }
+          break;
+      
+        default:
+         {
+          let i = state.favMovies.findIndex(el => el.id === payload.movie.id)
+          state.searchResults[i]={...state.searchResults[i],fav:false}
+          state.favMovies.splice(i,1)
+         }
+      }
     }
+
   },
   actions: {
     searchFromMovieTitle({state,commit},payload){
@@ -38,5 +57,18 @@ export default new Vuex.Store({
     .catch(err=> console.log(err))
     }
 },
+  getters:{
+    searchTypeMovie: (state) => {
+      let res = 0
+      for(let i=0;i<state.searchResults.length;i++){
+        if(state.searchResults[i].titleType==='movie') res++
+      }
+      return res
+
+    },
+    favNumber: (state) => {
+      return state.favMovies.length
+    }
+  },
   modules: { },
 });
