@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import SearchMovie from "@/components/SearchMovie"
+import MovieDetails from "@/components/MovieDetails"
 
 Vue.use(VueRouter)
 
@@ -14,11 +15,20 @@ const routes = [
   {
     path: '/search-movie',
     name: 'SearchMovie',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
     component: SearchMovie
-  }
+  },
+  {
+    path: '/search-movie',
+    name: 'SearchMovie',
+    component: SearchMovie,
+   
+  },
+  {
+    path: '/movie-detail/title/:id',
+    name: 'movie-details',
+    component: MovieDetails,
+   
+  },
 ]
 
 const router = new VueRouter({

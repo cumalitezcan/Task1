@@ -39,7 +39,7 @@
 
         <b-card-text>A second paragraph of text in the card.</b-card-text>
 
-        <a href="#" class="card-link">{{ movie.id }}</a>
+        <button @click="goDetails(movie.id)" class="card-link">{{ movie.id }}</button>
         <b-link href="#" class="card-link">Another link</b-link>
       </b-card>
     </div>
@@ -74,6 +74,9 @@ export default {
     addFavorite(movie, type) {
       this.SET_FAV({ type, movie });
     },
+    goDetails(id){
+      this.$router.push({path:'/movie-detail'+id})
+    }
   },
   computed: {
     ...mapGetters(["searchTypeMovie", "favNumber"]),
