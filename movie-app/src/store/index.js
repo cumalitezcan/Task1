@@ -39,8 +39,13 @@ export default new Vuex.Store({
         }
       }
     },
-    SET_MOVIE_DETAIL_RESULT(state, payload) {
-      state.movieDetails = payload;
+    SET_MOVIE_DETAIL(state, payload) {
+      if(payload.type === 'add'){
+        state.movieDetails = payload.data
+      } else if (payload.type === 'del') {
+        state.movieDetails = []
+      }
+     
     },
   },
   actions: {
@@ -74,7 +79,7 @@ export default new Vuex.Store({
         .then((res) => {
           console.log(res);
 
-          commit("SET_MOVIE_DETAIL_RESULT", res.data);
+          commit("SET_MOVIE_DETAIL", {data:res.data,type:'add'});
         })
         .catch((err) => console.log(err));
     },
