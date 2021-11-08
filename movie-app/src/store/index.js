@@ -15,6 +15,7 @@ export default new Vuex.Store({
     searchResults: [],
     favMovies: [],
     movieDetails: [],
+    actorDetails: []
   },
   mutations: {
     SET_MOVIE_SEARCH_RESULT(state, payload) {
@@ -39,7 +40,7 @@ export default new Vuex.Store({
         }
       }
     },
-    SET_MOVIE_DETAIL(state, payload) {
+    SET_MOVIE_DETAILS(state, payload) {
       if(payload.type === 'add'){
         state.movieDetails = payload.data
       } else if (payload.type === 'del') {
@@ -47,6 +48,14 @@ export default new Vuex.Store({
       }
      
     },
+    SET_ACTOR_DETAILS(state,payload){
+      if(payload.type === 'add'){
+        state.actorDetails = payload;
+      } else if (payload.type === 'del'){
+        state.actorDetails = []
+      }
+      
+    }
   },
   actions: {
     searchFromMovieTitle({ state, commit }, payload) {
@@ -79,10 +88,23 @@ export default new Vuex.Store({
         .then((res) => {
           console.log(res);
 
-          commit("SET_MOVIE_DETAIL", {data:res.data,type:'add'});
+          commit("SET_MOVIE_DETAILS", {data:res.data,type:'add'});
         })
         .catch((err) => console.log(err));
     },
+    getActorDetails({state, commit},payload){
+      axios
+      .get(`${state.apiUrl}/actors/get-bio`, {
+        headers: { ...state.headers },
+        params: { nconst: payload },
+      })
+      .then((res) => {
+        console.log(res);
+
+        commit("SET_ACTOR_DETAILS", {data:res.data,type:'add'});
+      })
+      .catch((err) => console.log(err));
+    }
   },
   getters: {
     searchTypeMovie: (state) => {

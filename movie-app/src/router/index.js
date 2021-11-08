@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '@/store'
 import Home from '../views/Home.vue'
 import SearchMovie from "@/components/SearchMovie"
 import MovieDetails from "@/components/MovieDetails"
@@ -34,7 +35,14 @@ const routes = [
     path: '/actor/name/:id',
     name: 'actor-details',
     component: ActorDetails,
-   
+
+    //Navigation Guard
+    beforeEnter:(next) => {
+      //Nereden nereye izin veriyor muyum ?
+      store.commit('SET_ACTOR_DETAILS',{type:'del'})
+      next();
+    }
+
   },
 ]
 

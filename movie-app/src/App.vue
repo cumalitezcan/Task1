@@ -8,6 +8,17 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "App",
+  watch: {
+    $route(to,from){
+      console.log(to,from)
+    }
+  }
+}
+</script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

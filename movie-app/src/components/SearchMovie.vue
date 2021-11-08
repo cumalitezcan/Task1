@@ -61,7 +61,7 @@ export default {
 
   methods: {
     ...mapActions(["searchFromMovieTitle"]),
-    ...mapMutations(["SET_FAV"]),
+    ...mapMutations(['SET_FAV','SET_MOVIE_DETAILS']),
     search() {
       this.$router.push({
         name: "SearchMovie",
@@ -89,6 +89,11 @@ export default {
     //   return this.$store.state.searchResults;
     // },
   },
+
+  // beforeRouteLeave (next) { //beforeRouteEnter, beforeRouteUpdate
+  //   this.SET_MOVIE_DETAILS({type:'del'})
+  //   next();
+  // },
 
   //sayfa yenilenince arama listesinin gitmemesi
   mounted() {
