@@ -32,15 +32,16 @@
         <div v-if="movie.image">
           <b-img :src="movie.image.url" fluid></b-img>
         </div>
-        <b-card-text>
-          Some quick example text to build on the <em>card title</em> and make
-          up the bulk of the card's content.
-        </b-card-text>
 
-        <b-card-text>A second paragraph of text in the card.</b-card-text>
+        <b-list-group class="mt-4" v-if="movie.principals">
+          <b-list-group-item v-for="(el,$i) in movie.principals" :key="$i"
+            @click="goActorPage(el.id)"
+          >
+            {{el.name}}
+          </b-list-group-item>
+        </b-list-group>
 
-        <button @click="goDetails(movie.id)" class="card-link">{{ movie.id }}</button>
-        <b-link href="#" class="card-link">Another link</b-link>
+        <button @click="goDetails(movie.id)" class="card-link mt-2">Detail</button>
       </b-card>
     </div>
   </div>
@@ -74,8 +75,11 @@ export default {
     addFavorite(movie, type) {
       this.SET_FAV({ type, movie });
     },
-    goDetails(id){
-      this.$router.push({path:'/movie-detail'+id})
+    goDetails(id) {
+      this.$router.push({ path: "/movie-detail" + id });
+    },
+    goActorPage(id){
+       this.$router.push({ path: "/actor" + id });
     }
   },
   computed: {
