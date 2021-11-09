@@ -5,6 +5,7 @@ import Home from '../views/Home.vue'
 import SearchMovie from "@/components/SearchMovie"
 import MovieDetails from "@/components/MovieDetails"
 import ActorDetails from "@/components/ActorDetails"
+import Chart from "@/components/Chart"
 
 Vue.use(VueRouter)
 
@@ -20,9 +21,9 @@ const routes = [
     component: SearchMovie
   },
   {
-    path: '/search-movie',
-    name: 'SearchMovie',
-    component: SearchMovie,
+    path: '/chart',
+    name: 'Chart',
+    component: Chart,
    
   },
   {
