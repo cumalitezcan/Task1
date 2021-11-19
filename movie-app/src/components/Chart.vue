@@ -1,7 +1,7 @@
 <template>
   <div>
       <h3>Chart</h3>
-       <div ref="example"></div>
+       <div ref="chartArea"></div>
   </div>
  
 </template>
@@ -36,7 +36,7 @@ export default {
       let margin = ({top: 30, right: 30, bottom: 70, left: 60});
       let width = 460 - margin.left - margin.right;
       let height = 400 - margin.top - margin.bottom;
-      const svg = d3.select(this.$refs.example).
+      const svg = d3.select(this.$refs.chartArea).
         append("svg").
         attr("width", width + margin.left + margin.right).
         attr("height", height + margin.top + margin.bottom).
