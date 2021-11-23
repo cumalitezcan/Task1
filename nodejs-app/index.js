@@ -13,19 +13,13 @@ app.get('/', (req, res) =>{
 })
 
 //routes => (CRUD)
-app.get('/students', db.students.getStudents)
-// app.post('/student', db.students.getByName)
-// app.delete('/students', db.students.delByName)
-// app.post('/students', db.students.create)
-// app.put('/students', db.students.update)
-// app.post('/studentone', db.students.updateOne)
+app.get('/students', db.students.getAll)
+app.post('/student', db.students.getByName)
+app.delete('/students', db.students.delByName)
+app.post('/students', db.students.create)
+app.put('/students', db.students.update)
 
-// app.get('/classes', db.classes.getAll)
-// app.post('/classes', db.classes.create)
-// app.get('/class', db.classes.getClass)
-// app.get('/classone', db.classes.getByName)
-// app.put('/classes', db.classes.updateOne)
-// app.delete('/classes', db.classes.delByName)
+
 
 app.listen(8080, () =>{
     console.log('port 8080 listening ...')
