@@ -20,6 +20,13 @@ app.post('/students', db.students.create)
 app.put('/students', db.students.update)
 
 
+app.get('/classes', db.classes.getAll)
+app.post('/classes', db.classes.create)
+app.get('/class', db.classes.getClass)
+app.get('/classone', db.classes.getByName)
+app.put('/classes', db.classes.updateOne)
+app.delete('/classes', db.classes.delByName)
+
 
 app.listen(8080, () =>{
     console.log('port 8080 listening ...')
